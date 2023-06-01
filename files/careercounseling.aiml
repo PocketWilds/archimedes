@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+	
+	<category>
+        <pattern>GREETINGS</pattern>
+        <that></that>
+            <template>
+                Hello, my name is Archimedes; I am a career counseling bot to help you explore potential  CS career paths.  Do you prefer working on high-level or low-level problems?
+                <button>
+                    <text>High</text>
+                    <postback>HIGH</postback>
+                </button>
+                <button>
+                    <text>Low</text>
+                    <postback>LOW</postback>
+                </button>
+            </template>
+    </category>
+	<category>
+	    <pattern>HIGH</pattern>
+	    <template>
+	        <think><set name="onesPlace">1</set></think>
+	        <srai>QUESTION TWO</srai>
+        </template>
+	</category>
+	<category>
+	    <pattern>LOW</pattern>
+	    <template>
+	        <think><set name="onesPlace">0</set></think>
+	        <srai>QUESTION TWO</srai>
+        </template>
+	</category>
+	<category>
+	    <pattern>HEY</pattern>
+	    <template><srai>GREETINGS</srai></template>
+	</category>
+	<category>
+	    <pattern>HI</pattern>
+	    <template><srai>GREETINGS</srai></template>
+	</category>
+	<category>
+	    <pattern>HELLO</pattern>
+	    <template><srai>GREETINGS</srai></template>
+	</category>
+	<category>
+	    <pattern>HELLO</pattern>
+	    <template><srai>GREETINGS</srai></template>
+	</category>
+	
+    <category>
+        <pattern>QUESTION TWO</pattern>
+        <that>
+            LT BUTTON GT LT TEXT GT HIGH LT SLASH TEXT GT LT POSTBACK GT HIGH LT SLASH POSTBACK GT LT SLASH BUTTON GT LT BUTTON GT LT TEXT GT LOW LT SLASH TEXT GT LT POSTBACK GT LOW LT SLASH POSTBACK GT LT SLASH BUTTON GT
+        </that>
+        <template>
+            Is it more useful to be highly Specialized or Generalized?
+            <button>
+                <text>Specialized</text>
+                <postback>SPECIALIZED</postback>
+            </button>
+            <button>
+                <text>Generalized</text>
+                <postback>GENERALIZED</postback>
+            </button>
+        </template>
+    </category>
+    <category>
+        <pattern>SPECIALIZED</pattern>
+	    <template>
+	        <think><set name="twosPlace">2</set></think>
+	        <srai>QUESTION THREE</srai>
+        </template>
+	</category>
+	<category>
+	    <pattern>GENERALIZED</pattern>
+	    <template>
+	        <think><set name="twosPlace">0</set></think>
+	        <srai>QUESTION THREE</srai>
+        </template>
+	</category>
+	
+	<category>
+        <pattern>QUESTION THREE</pattern>
+        <that>
+            LT BUTTON GT LT TEXT GT SPECIALIZED LT SLASH TEXT GT LT POSTBACK GT SPECIALIZED LT SLASH POSTBACK GT LT SLASH BUTTON GT LT BUTTON GT LT TEXT GT GENERALIZED LT SLASH TEXT GT LT POSTBACK GT GENERALIZED LT SLASH POSTBACK GT LT SLASH BUTTON GT
+        </that>
+        <template>
+            Would you prefer to work with tools that are Highly Stable or Bleeding Edge?
+            <button>
+                <text>Bleeding Edge</text>
+                <postback>BLEEDING EDGE</postback>
+            </button>
+            <button>
+                <text>Highly Stable</text>
+                <postback>HIGHLY STABLE</postback>
+            </button>
+        </template>
+    </category>
+    <category>
+        <pattern>BLEEDING EDGE</pattern>
+	    <template>
+	        <think><set name="foursPlace">4</set></think>
+	        <srai>QUESTION FOUR</srai>
+        </template>
+	</category>
+	<category>
+	    <pattern>HIGHLY STABLE</pattern>
+	    <template>
+	        <think><set name="foursPlace">0</set></think>
+	        <srai>QUESTION FOUR</srai>
+        </template>
+	</category>
+	
+	<category>
+        <pattern>QUESTION FOUR</pattern>
+        <that>
+            LT BUTTON GT LT TEXT GT BLEEDING EDGE LT SLASH TEXT GT LT POSTBACK GT BLEEDING EDGE LT SLASH POSTBACK GT LT SLASH BUTTON GT LT BUTTON GT LT TEXT GT HIGHLY STABLE LT SLASH TEXT GT LT POSTBACK GT HIGHLY STABLE LT SLASH POSTBACK GT LT SLASH BUTTON GT
+        </that>
+        <template>
+            And finally, if you were in the Gold Rush, would you rather Prospect for Gold or Sell the Shovels?
+            <button>
+                <text>Prospect for Gold</text>
+                <postback>PROSPECT</postback>
+            </button>
+            <button>
+                <text>Sell the Shovels</text>
+                <postback>SELL SHOVELS</postback>
+            </button>
+        </template>
+    </category>
+    <category>
+        <pattern>PROSPECT</pattern>
+	    <template>
+	        <think><set name="eightsPlace">8</set></think>
+	        <srai>TALLY RESULTS</srai>
+        </template>
+	</category>
+	<category>
+	    <pattern>SELL SHOVELS</pattern>
+	    <template>
+	        <think><set name="eightsPlace">0</set></think>
+	        <srai>TALLY RESULTS</srai>
+        </template>
+	</category>
+	
+	<category>
+	    <pattern>TALLY RESULTS</pattern>
+	    <template>
+	        <condition name="eightsPlace">
+	            <li value="8">
+        	        <condition name="foursPlace">
+        	            <li value="4">
+        	                <condition name="twosPlace">
+                	            <li value="2">
+                	                <condition name="onesPlace">
+                        	            <li value="1">
+                        	                <think><set name="index">15</set></think>
+                        	            </li>
+                        	            <li value="0">
+                        	                <think><set name="index">14</set></think>
+                        	            </li>
+                        	        </condition>
+                	            </li>
+                	            <li value="0">
+                	                <condition name="onesPlace">
+                        	            <li value="1">
+                        	                <think><set name="index">13</set></think>
+                        	            </li>
+                        	            <li value="0">
+                        	                <think><set name="index">12</set></think>
+                        	            </li>
+                        	        </condition>
+                	            </li>
+            	            </condition>
+        	            </li>
+        	            <li value="0">
+        	                <condition name="twosPlace">
+                	            <li value="2">
+                	                <condition name="onesPlace">
+                        	            <li value="1">
+                        	                <think><set name="index">11</set></think>
+                        	            </li>
+                        	            <li value="0">
+                        	                <think><set name="index">10</set></think>
+                        	            </li>
+                        	        </condition>
+                	            </li>
+                	            <li value="0">
+                	                <condition name="onesPlace">
+                        	            <li value="1">
+                        	                <think><set name="index">9</set></think>
+                        	            </li>
+                        	            <li value="0">
+                        	                <think><set name="index">8</set></think>
+                        	            </li>
+                        	        </condition>
+                	            </li>
+            	            </condition>
+        	            </li>
+        	        </condition>        
+	            </li>
+	            <li value="0">
+	                 <condition name="foursPlace">
+        	            <li value="4">
+        	                <condition name="twosPlace">
+                	            <li value="2">
+                	                <condition name="onesPlace">
+                        	            <li value="1">
+                        	                <think><set name="index">7</set></think>
+                        	            </li>
+                        	            <li value="0">
+                        	                <think><set name="index">6</set></think>
+                        	            </li>
+                        	        </condition>
+                	            </li>
+                	            <li value="0">
+                	                <condition name="onesPlace">
+                        	            <li value="1">
+                        	                <think><set name="index">5</set></think>
+                        	            </li>
+                        	            <li value="0">
+                        	                <think><set name="index">4</set></think>
+                        	            </li>
+                        	        </condition>
+                	            </li>
+            	            </condition>
+        	            </li>
+        	            <li value="0">
+        	                <condition name="twosPlace">
+                	            <li value="2">
+                	                <condition name="onesPlace">
+                        	            <li value="1">
+                        	                <think><set name="index">3</set></think>
+                        	            </li>
+                        	            <li value="0">
+                        	                <think><set name="index">2</set></think>
+                        	            </li>
+                        	        </condition>
+                	            </li>
+                	            <li value="0">
+                	                <condition name="onesPlace">
+                        	            <li value="1">
+                        	                <think><set name="index">1</set></think>
+                        	            </li>
+                        	            <li value="0">
+                        	                <think><set name="index">0</set></think>
+                        	            </li>
+                        	        </condition>
+                	            </li>
+            	            </condition>
+        	            </li>
+        	        </condition>
+	            </li>
+	        </condition>
+	        <srai>RESULTS</srai>
+	    </template>
+	</category>
+	
+	<category>
+	    <pattern>RESULTS</pattern>
+	    <that>
+	        LT BUTTON GT LT TEXT GT PROSPECT FOR GOLD LT SLASH TEXT GT LT POSTBACK GT PROSPECT LT SLASH POSTBACK GT LT SLASH BUTTON GT LT BUTTON GT LT TEXT GT SELL THE SHOVELS LT SLASH TEXT GT LT POSTBACK GT SELL SHOVELS LT SLASH POSTBACK GT LT SLASH BUTTON GT
+	    </that>
+	    <template>
+	        I recommend that you consider <map name="careers"><get name="index"></get></map>.  <map name="careerblurb"><get name="index"></get></map>
+	        <button>
+                <text>Repeat</text>
+                <postback>AGAIN</postback>
+            </button>
+	    </template>
+	</category>
+	
+	
+	<category>
+	    <pattern>AGAIN</pattern>
+	    <that>
+	         LT BUTTON GT LT TEXT GT REPEAT LT SLASH TEXT GT LT POSTBACK GT AGAIN LT SLASH POSTBACK GT LT SLASH BUTTON GT
+	    </that>
+	    <template>
+	        <srai>GREETINGS</srai>
+	    </template>
+	</category>
+</aiml>
